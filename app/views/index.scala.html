@@ -10,7 +10,6 @@
     @for(booking <- bookings) {
       <li>
         @booking.name
-        @booking.start_date
 
         @form(routes.Application.deleteBooking(booking.id)) {
           <input type="submit" value="Delete">
@@ -22,18 +21,7 @@
     <h2>Add a new booking</h2>
 
     @form(routes.Application.newBooking()) {
-
-      @inputText(taskForm("Nom"))
-      @inputText(taskForm("Date"))
-
-      @inputText(taskForm("Equipe 1"))
-        @inputText(taskForm("Joueur 1"))
-        @inputText(taskForm("Joueur 2"))
-
-      @inputText(taskForm("Equipe 2"))
-        @inputText(taskForm("Joueur 1"))
-        @inputText(taskForm("Joueur 2"))
-
+      @inputText(taskForm("Name"))
       <input type="submit" value="Create">
     }
   }

@@ -18,10 +18,17 @@ public class Application extends Controller {
   }
 
   public static Result newBooking() {
-    return Results.TODO;
+    Form<Booking> filledForm = bookingForm.bindFromRequest();
+    System.out.println(filledForm);
+    if(filledForm.hasErrors()) {
+      return badRequest(views.html.index.render(Booking.all(), filledForm));
+    }
+    Booking.create(filledForm.get());
+    return redirect("/bookings");
   }
 
   public static Result deleteBooking(long id) {
-    return Results.TODO;
+    Booking.delete(id);
+    return redirect("/bookings");
   }
 }

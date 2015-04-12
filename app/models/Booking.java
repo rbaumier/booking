@@ -10,30 +10,33 @@ import java.util.List;
 
 @Entity
 public class Booking extends Model {
-  @Required
   @Id
   public long id;
-
-  @Required
   public String name;
 
-  @Required
-  @OneToMany
-  public Team team;
+//  @Required
+//  @OneToMany
+//  public Team team;
+//
+//  @Required
+//  public Timestamp start_date;
+//
+//  @Required
+//  public Alley alley;
 
-  @Required
-  public Timestamp start_date;
-
-  @Required
-  public Alley alley;
+  public static Finder<Long,Booking> find = new Finder(
+    Long.class, Booking.class
+  );
 
   public static List<Booking> all() {
-    return new ArrayList<Booking>();
+    return find.all();
   }
 
-  public static void create(Booking task) {
+  public static void create(Booking booking) {
+    booking.save();
   }
 
   public static void delete(Long id) {
+    find.ref(id).delete();
   }
 }
