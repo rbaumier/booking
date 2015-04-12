@@ -14,17 +14,21 @@ public class Application extends Controller {
   }
 
   public static Result bookings() {
-    return ok(views.html.index.render(Booking.all(), bookingForm));
+    return ok(views.html.index.render(Booking.all()));
   }
 
   public static Result newBooking() {
     Form<Booking> filledForm = bookingForm.bindFromRequest();
-    System.out.println(filledForm);
+
     if(filledForm.hasErrors()) {
-      return badRequest(views.html.index.render(Booking.all(), filledForm));
+      return badRequest(views.html.newbooking.render(filledForm));
     }
     Booking.create(filledForm.get());
     return redirect("/bookings");
+  }
+
+  public static Result form() {
+    return ok(views.html.newbooking.render(bookingForm));
   }
 
   public static Result deleteBooking(long id) {

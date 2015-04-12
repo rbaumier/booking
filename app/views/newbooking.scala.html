@@ -1,0 +1,12 @@
+@(bookingForm: Form[Booking])
+
+@import views.html.helper.inputText
+@import views.html.helper.form
+
+@main("Créer une réservation") {
+
+  @form(routes.Application.newBooking()) {
+    @inputText(bookingForm("Name"))
+    <button class="btn btn-primary" type="submit">Create</button>
+  }
+}

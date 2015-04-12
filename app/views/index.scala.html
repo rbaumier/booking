@@ -1,27 +1,22 @@
-@(bookings: List[Booking], taskForm: Form[Booking])
+@(bookings: List[Booking])
 
-  @import helper._
+@import helper._
 
-  @main("Réservations") {
+@main("Réservations") {
 
-    <h1>@bookings.size() booking(s)</h1>
+  <h1>@bookings.size() booking(s)</h1>
 
-    <ul>
-    @for(booking <- bookings) {
-      <li>
-        @booking.name
+  <ul>
+  @for(booking <- bookings) {
+    <li>
+      @booking.name
 
-        @form(routes.Application.deleteBooking(booking.id)) {
-          <button class="btn btn-danger" type="submit">Delete</button>
-          }
-      </li>
-    }
-    </ul>
-
-    <h2>Add a new booking</h2>
-
-    @form(routes.Application.newBooking()) {
-      @inputText(taskForm("Name"))
-      <button class="btn btn-primary" type="submit">Create</button>
-    }
+      @form(routes.Application.deleteBooking(booking.id)) {
+        <button class="btn btn-danger" type="submit">Delete</button>
+        }
+    </li>
   }
+  </ul>
+
+  <a class="btn btn-primary" href="/bookings/create">New booking</a>
+}
