@@ -1,7 +1,39 @@
-@(message: String)
+@(bookings: List[Booking], taskForm: Form[Booking])
 
-@main("Welcome to Play") {
+  @import helper._
 
-    @play20.welcome(message, style = "Java")
+  @main("Réservations") {
 
-}
+    <h1>@bookings.size() booking(s)</h1>
+
+    <ul>
+    @for(booking <- bookings) {
+      <li>
+        @booking.name
+        @booking.start_date
+
+        @form(routes.Application.deleteBooking(booking.id)) {
+          <input type="submit" value="Delete">
+          }
+      </li>
+    }
+    </ul>
+
+    <h2>Add a new booking</h2>
+
+    @form(routes.Application.newBooking()) {
+
+      @inputText(taskForm("Nom"))
+      @inputText(taskForm("Date"))
+
+      @inputText(taskForm("Equipe 1"))
+        @inputText(taskForm("Joueur 1"))
+        @inputText(taskForm("Joueur 2"))
+
+      @inputText(taskForm("Equipe 2"))
+        @inputText(taskForm("Joueur 1"))
+        @inputText(taskForm("Joueur 2"))
+
+      <input type="submit" value="Create">
+    }
+  }

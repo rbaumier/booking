@@ -3,9 +3,14 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET         /                       controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET         /assets/*file           controllers.Assets.at(path="/public", file)
 
-    
+# bookings
+GET         /bookings               controllers.Application.bookings()
+POST        /bookings               controllers.Application.newBooking()
+POST        /bookings/:id/delete    controllers.Application.deleteBooking(id: Long)
+
+
