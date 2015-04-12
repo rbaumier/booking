@@ -9,9 +9,9 @@ GET         /                           controllers.Application.index
 GET         /assets/*file               controllers.Assets.at(path="/public", file)
 
 # bookings
-GET         /bookings                   controllers.Application.bookings()
-GET         /bookings/create            controllers.Application.form()
-POST        /bookings                   controllers.Application.newBooking()
-POST        /bookings/:id/delete        controllers.Application.deleteBooking(id: Long)
+GET         /bookings                   controllers.Bookings.list()
+GET         /bookings/create            controllers.Bookings.form()
+POST        /bookings                   controllers.Bookings.create()
+POST        /bookings/:id/delete        controllers.Bookings.delete(id: Long)
 
 

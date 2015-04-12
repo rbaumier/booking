@@ -11,7 +11,7 @@
     <li>
       @booking.name
 
-      @form(routes.Application.deleteBooking(booking.id)) {
+      @form(routes.Bookings.delete(booking.id)) {
         <button class="btn btn-danger" type="submit">Delete</button>
         }
     </li>
