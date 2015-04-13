@@ -13,18 +13,22 @@
       '_label -> "Numéro de piste"
     )
 
-    @inputDate(bookingForm("start_date"),
-      '_label -> "Date de début"
-    )
+@*//    @inputText(bookingForm("start_date"),*@
+@*//      '_label -> "Date de début",*@
+@*//      'type -> "datetime-local"*@
+@*//    )*@
 
-    @inputText(bookingForm("teams[0].name"),
-      '_label -> "Nom d'équipe"
-    )
+    @for(i <- 0 to 1) {
+      @inputText(bookingForm("teams[" + i +"].name"),
+        '_label -> "Nom d'équipe"
+      )
 
-    @inputText(bookingForm("teams[0].players[0].name"),
-    '_label -> "Nom du joueur"
-    )
-
+      @for(j <- 0 to 1) {
+        @inputText(bookingForm("teams[" + i + "].players[" + j + "].name"),
+          '_label -> "Nom du joueur"
+        )
+      }
+    }
     <button class="btn btn-primary" type="submit">Réserver</button>
     <a class="btn btn-default" href="/bookings">Annuler</a>
   }

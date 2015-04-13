@@ -7,7 +7,6 @@ create table booking (
   id                        number(19) not null,
   alley                     number(10),
   name                      varchar2(255),
-  start_date                timestamp,
   constraint pk_booking primary key (id))
 ;
 
