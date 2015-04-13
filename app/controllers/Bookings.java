@@ -24,7 +24,7 @@ public class Bookings extends Controller {
       return badRequest(newbooking.render(boundForm));
     }
     Booking booking = boundForm.get();
-    
+
     booking.save();
     return redirect("/bookings");
   }
