@@ -1,11 +1,9 @@
 package models;
 
-import org.joda.time.DateTime;
 import play.data.validation.Constraints.*;
 import play.db.ebean.Model;
-
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,7 +12,7 @@ public class Booking extends Model {
   public long id;
   public int alley;
   public String name;
-//  public DateTime start_date = new DateTime();
+  public Date start_date;;
 
   @Required
   @OneToMany (cascade = CascadeType.ALL)

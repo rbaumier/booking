@@ -6,7 +6,7 @@ import models.Team;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.newbooking;
+import views.html.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +15,12 @@ public class Bookings extends Controller {
   static Form<Booking> bookingForm = Form.form(Booking.class);
 
   public static Result list() {
-    return ok(views.html.index.render(Booking.all()));
+    return ok(index.render(Booking.all()));
   }
 
   public static Result create() {
     Form<Booking> boundForm = bookingForm.bindFromRequest();
+    System.out.println(boundForm);
     if(boundForm.hasErrors()) {
       return badRequest(newbooking.render(boundForm));
     }

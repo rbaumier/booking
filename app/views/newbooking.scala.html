@@ -13,10 +13,10 @@
       '_label -> "Numéro de piste"
     )
 
-@*//    @inputText(bookingForm("start_date"),*@
-@*//      '_label -> "Date de début",*@
-@*//      'type -> "datetime-local"*@
-@*//    )*@
+    @inputText(bookingForm("start_date"),
+      '_label -> "Date de début",
+      'type -> "datetime-local"
+    )
 
     @for(i <- 0 to 1) {
       @inputText(bookingForm("teams[" + i +"].name"),
@@ -29,6 +29,7 @@
         )
       }
     }
+
     <button class="btn btn-primary" type="submit">Réserver</button>
     <a class="btn btn-default" href="/bookings">Annuler</a>
   }
