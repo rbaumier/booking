@@ -1,12 +1,31 @@
 @(bookingForm: Form[Booking])
 
-@import views.html.helper.inputText
-@import views.html.helper.form
+@import views.html.helper._
 
 @main("Créer une réservation") {
 
   @form(routes.Bookings.create()) {
-    @inputText(bookingForm("Name"))
+    @inputText(bookingForm("name"),
+      '_label -> "Nom de la réservation"
+    )
+
+    @select(bookingForm("alley"),
+      (1 to 10).map {n => (n.toString, n.toString) },
+      '_label -> "Numéro de piste"
+    )
+
+@*//    @inputDate(bookingForm("start_date"),*@
+@*//      '_label -> "Date de début"*@
+@*//    )*@
+
+    @inputText(bookingForm("teams[0].name"),
+      '_label -> "Nom d'équipe"
+    )
+
+@*//    @inputText(bookingForm("Team.Player.name"),*@
+@*//      '_label -> "Nom du joueur"*@
+@*//    )*@
+
     <button class="btn btn-primary" type="submit">Create</button>
   }
 }

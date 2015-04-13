@@ -1,9 +1,14 @@
 package controllers;
 
 import models.Booking;
+import models.Team;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.newbooking;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Bookings extends Controller {
   static Form<Booking> bookingForm = Form.form(Booking.class);
@@ -13,17 +18,24 @@ public class Bookings extends Controller {
   }
 
   public static Result create() {
-    Form<Booking> filledForm = bookingForm.bindFromRequest();
-
-    if(filledForm.hasErrors()) {
-      return badRequest(views.html.newbooking.render(filledForm));
+    Form<Booking> boundForm = bookingForm.bindFromRequest();
+    if(boundForm.hasErrors()) {
+      return badRequest(newbooking.render(boundForm));
     }
-    Booking.create(filledForm.get());
+    Booking booking = boundForm.get();
+    List<Team> teams = new ArrayList<Team>();
+
+    for (Team team : booking.teams) {
+      teams.add(team);
+    }
+
+    booking.teams = teams;
+    booking.save();
     return redirect("/bookings");
   }
 
   public static Result form() {
-    return ok(views.html.newbooking.render(bookingForm));
+    return ok(newbooking.render(bookingForm));
   }
 
   public static Result delete(long id) {

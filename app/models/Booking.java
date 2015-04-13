@@ -1,10 +1,10 @@
 package models;
 
+import org.joda.time.DateTime;
 import play.data.validation.Constraints.*;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,17 +12,13 @@ import java.util.List;
 public class Booking extends Model {
   @Id
   public long id;
+  public int alley;
   public String name;
+//  public DateTime start_date = new DateTime();
 
-//  @Required
-//  @OneToMany
-//  public Team team;
-//
-//  @Required
-//  public Timestamp start_date;
-//
-//  @Required
-//  public Alley alley;
+  @Required
+  @OneToMany (cascade = CascadeType.ALL)
+  public List<Team> teams;
 
   public static Finder<Long,Booking> find = new Finder(
     Long.class, Booking.class
@@ -30,10 +26,6 @@ public class Booking extends Model {
 
   public static List<Booking> all() {
     return find.all();
-  }
-
-  public static void create(Booking booking) {
-    booking.save();
   }
 
   public static void delete(Long id) {
