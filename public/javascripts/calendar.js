@@ -1,24 +1,21 @@
 $(document).ready(function () {
 
-// '2015-02-12'
-function today() {
-  return moment()
-  .format('L')
-  .replace(/\//g,'-');
-}
-
   $('#calendar').fullCalendar({
     header: {
       left: 'prev,next today',
       center: 'title',
-      right: 'month,basicWeek,basicDay'
+      right: 'month,agendaWeek,agendaDay'
     },
-    defaultDate: today(),
-    defaultView: 'basicDay',
+    lang: 'fr',
+    allDaySlot: false,
+    defaultView: 'agendaDay',
+    buttonIcons: true, // show the prev/next text
+    weekNumbers: true,
     editable: true,
-    eventLimit: true,
-    events: []
-
+    eventLimit: true, // allow "more" link when too many events
+    events: [],
+    minTime: "12:00",
+    maxTime: "24:00"
   });
 
 });
