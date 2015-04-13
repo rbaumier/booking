@@ -3,7 +3,6 @@
 @import views.html.helper._
 
 @main("Créer une réservation") {
-
   @form(routes.Bookings.create()) {
     @inputText(bookingForm("name"),
       '_label -> "Nom de la réservation"
@@ -26,6 +25,7 @@
     '_label -> "Nom du joueur"
     )
 
-    <button class="btn btn-primary" type="submit">Create</button>
+    <button class="btn btn-primary" type="submit">Réserver</button>
+    <a class="btn btn-default" href="/bookings">Annuler</a>
   }
 }

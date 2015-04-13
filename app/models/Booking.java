@@ -14,7 +14,7 @@ public class Booking extends Model {
   public long id;
   public int alley;
   public String name;
-//  public DateTime start_date = new DateTime();
+  public DateTime start_date = new DateTime();
 
   @Required
   @OneToMany (cascade = CascadeType.ALL)
