@@ -10,9 +10,6 @@ public class Player extends Model {
   public long id;
   public String name;
 
-  @ManyToOne
-  public Team team;
-
   @Column(columnDefinition = "integer default 0")
   public int score = 0;
 }

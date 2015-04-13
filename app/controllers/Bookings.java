@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Booking;
+import models.Player;
 import models.Team;
 import play.data.Form;
 import play.mvc.Controller;
@@ -23,13 +24,7 @@ public class Bookings extends Controller {
       return badRequest(newbooking.render(boundForm));
     }
     Booking booking = boundForm.get();
-    List<Team> teams = new ArrayList<Team>();
-
-    for (Team team : booking.teams) {
-      teams.add(team);
-    }
-
-    booking.teams = teams;
+    
     booking.save();
     return redirect("/bookings");
   }

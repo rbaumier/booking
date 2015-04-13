@@ -14,17 +14,17 @@
       '_label -> "Numéro de piste"
     )
 
-@*//    @inputDate(bookingForm("start_date"),*@
-@*//      '_label -> "Date de début"*@
-@*//    )*@
+    @inputDate(bookingForm("start_date"),
+      '_label -> "Date de début"
+    )
 
     @inputText(bookingForm("teams[0].name"),
       '_label -> "Nom d'équipe"
     )
 
-@*//    @inputText(bookingForm("Team.Player.name"),*@
-@*//      '_label -> "Nom du joueur"*@
-@*//    )*@
+    @inputText(bookingForm("teams[0].player[0].name"),
+    '_label -> "Nom du joueur"
+    )
 
     <button class="btn btn-primary" type="submit">Create</button>
   }

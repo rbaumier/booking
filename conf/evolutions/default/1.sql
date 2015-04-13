@@ -12,8 +12,8 @@ create table booking (
 
 create table player (
   id                        number(19) not null,
+  team_id                   number(19) not null,
   name                      varchar2(255),
-  team_id                   number(19),
   score                     integer default 0,
   constraint pk_player primary key (id))
 ;
