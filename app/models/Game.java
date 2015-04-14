@@ -7,22 +7,22 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Booking extends Model {
+public class Game extends Model {
   @Id
   public long id;
   public int alley;
   public String name;
-  public Date start_date;;
+  public Date start_ts;;
 
   @Required
   @OneToMany (cascade = CascadeType.ALL)
   public List<Team> teams;
 
-  public static Finder<Long,Booking> find = new Finder(
-    Long.class, Booking.class
+  public static Finder<Long, Game> find = new Finder(
+    Long.class, Game.class
   );
 
-  public static List<Booking> all() {
+  public static List<Game> all() {
     return find.all();
   }
 

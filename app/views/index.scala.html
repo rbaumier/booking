@@ -1,4 +1,4 @@
-@(bookings: List[Booking])
+@(games: List[Game])
 
 @import helper._
 
@@ -9,7 +9,7 @@
   <div id="calendar"></div>
 
   @*<ul>*@
-@*//  @for(booking <- bookings) {*@
+@*//  @for(booking <- games) {*@
 @*//    *@@*<li> @booking.name*@
 @*//    @form(routes.Bookings.delete(booking.id)) {*@
       @*<button class="btn btn-danger" type="submit">Delete</button>*@
@@ -18,5 +18,5 @@
   @*}*@
   @*</ul>*@
 
-  <a class="btn btn-primary" href="@routes.Bookings.form()">Nouvelle réservation</a>
+  <a class="btn btn-primary" href="@routes.Games.form()">Nouvelle réservation</a>
 }
