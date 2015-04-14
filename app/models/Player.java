@@ -10,6 +10,6 @@ public class Player extends Model {
   public long id;
   public String name;
 
-  @Column(columnDefinition = "integer default 0")
-  public int score = 0;
+  @OneToOne
+  public Stats stats;
 }
