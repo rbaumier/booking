@@ -1,0 +1,36 @@
+@(gameForm: Form[Game], id: Long)
+
+@import views.html.helper._
+
+@main("Créer une réservation") {
+  @form(routes.Games.update(id)) {
+    @inputText(gameForm("name"),
+      '_label -> "Nom de la partie"
+    )
+
+    @select(gameForm("alley"),
+      (1 to 10).map {n => (n.toString, n.toString) },
+      '_label -> "Numéro de piste"
+    )
+
+    @inputText(gameForm("start_date"),
+      '_label -> "Date de début",
+      'type -> "datetime-local"
+    )
+
+    @for(i <- 0 to 1) {
+      @inputText(gameForm("teams[" + i +"].name"),
+        '_label -> "Nom d'équipe"
+      )
+
+      @for(j <- 0 to 1) {
+        @inputText(gameForm("teams[" + i + "].players[" + j + "].name"),
+          '_label -> "Nom du joueur"
+        )
+      }
+    }
+
+    <button class="btn btn-primary" type="submit">Réserver</button>
+    <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
+  }
+}

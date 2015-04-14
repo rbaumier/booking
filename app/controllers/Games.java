@@ -40,11 +40,20 @@ public class Games extends Controller {
   }
 
   public static Result edit(Long id) {
-    // TODO: retrouver en fonction de l'id, puis retourner le formulaire rempli
-    return play.mvc.Results.TODO;
+    Form form = gameForm.fill(Game.find.ref(id));
+    return ok(editgame.render(form, id));
   }
 
   public static Result update(long id) {
-    return play.mvc.Results.TODO;
+    Form<Game> boundForm = gameForm.bindFromRequest();
+    System.out.println(boundForm);
+    if(boundForm.hasErrors()) {
+      return badRequest(addgame.render(boundForm));
+    }
+    Game game = boundForm.get();
+    game.id = id;
+    game.save();
+    return index();
+
   }
 }
