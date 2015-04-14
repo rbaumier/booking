@@ -3,6 +3,9 @@ package controllers;
 import models.Game;
 import models.Player;
 import models.Team;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -25,7 +28,6 @@ public class Games extends Controller {
       return badRequest(newgame.render(boundForm));
     }
     Game game = boundForm.get();
-
     game.save();
     return redirect("/games");
   }
