@@ -1,9 +1,10 @@
 package controllers;
 
 import play.mvc.*;
+import views.html.index;
 
 public class Application extends Controller {
   public static Result index() {
-    return redirect("/games");
+    return ok(index.render());
   }
 }

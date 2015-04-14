@@ -15,7 +15,7 @@ public class Games extends Controller {
   static Form<Game> gameForm = Form.form(Game.class);
 
   public static Result list() {
-    return ok(index.render(Game.all()));
+    return ok(games.render(Game.all()));
   }
 
   public static Result create() {
