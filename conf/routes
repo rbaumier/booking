@@ -11,10 +11,15 @@ GET         /assets/*file            controllers.Assets.at(path="/public", file)
 # Javascript routes
 GET         /javascriptRoutes        controllers.Application.javascriptRoutes
 GET         /games/all               controllers.Games.getAll()
-# Games
+
+# Games view + form
 GET         /games                   controllers.Games.index()
 GET         /games/create            controllers.Games.form()
+
+# Games CRUD
 POST        /games                   controllers.Games.create()
+GET         /games/:id/edit          controllers.Games.edit(id: Long)
+PUT         /games/:id/update        controllers.Games.update(id: Long)
 POST        /games/:id/delete        controllers.Games.delete(id: Long)
 
 # Stats

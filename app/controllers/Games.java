@@ -38,4 +38,13 @@ public class Games extends Controller {
   public static Result getAll() {
     return ok(Json.toJson(Game.all()));
   }
+
+  public static Result edit(Long id) {
+    // TODO: retrouver en fonction de l'id, puis retourner le formulaire rempli
+    return play.mvc.Results.TODO;
+  }
+
+  public static Result update(long id) {
+    return play.mvc.Results.TODO;
+  }
 }
