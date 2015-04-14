@@ -3,6 +3,10 @@
 @import views.html.helper._
 
 @main("Créer une réservation") {
+  @form(routes.Games.delete(id)) {
+    <button class="btn btn-danger" type="submit">Supprimer</button>
+  }
+
   @form(routes.Games.update(id)) {
     @inputText(gameForm("name"),
       '_label -> "Nom de la partie"
