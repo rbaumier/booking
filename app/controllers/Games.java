@@ -18,20 +18,20 @@ public class Games extends Controller {
     Form<Game> boundForm = gameForm.bindFromRequest();
     System.out.println(boundForm);
     if(boundForm.hasErrors()) {
-      return badRequest(newgame.render(boundForm));
+      return badRequest(addgame.render(boundForm));
     }
     Game game = boundForm.get();
     game.save();
-    return redirect("/games");
+    return index();
   }
 
   public static Result form() {
-    return ok(newgame.render(gameForm));
+    return ok(addgame.render(gameForm));
   }
 
   public static Result delete(long id) {
     Game.delete(id);
-    return redirect("/games");
+    return index();
   }
 
   // returns all games as JSON for AJAX request
