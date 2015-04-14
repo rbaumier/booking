@@ -1,17 +1,5 @@
 var calendar = $('#calendar');
-
-function getGames() {
-  JSRouter.controllers.Games.getAll().ajax({
-    success: function (data) {
-      console.log('data:', data);
-    },
-    error: function () {
-      // TODO: bootstrap notify
-      console.log('cannot recover games');
-    }
-  });
-
-}
+var AVERAGE_DURATION = 10; // in minutes => https://answers.yahoo.com/question/index?qid=20080802193426AAWE8pI
 
 function initCalendar(events) {
   calendar.fullCalendar({
@@ -32,4 +20,36 @@ function initCalendar(events) {
   });
 }
 
-getGames();
+(function getGames() {
+  JSRouter.controllers.Games.getAll().ajax({
+    success: function (data) {
+      initCalendar(toEventObject(data));
+    },
+    error: function () {
+      console.log('cannot recover games'); // TODO: bootstrap notify
+    }
+  });
+
+}());
+
+// http://fullcalendar.io/docs/event_data/Event_Object/
+function toEventObject(games) {
+  return _.map(games, function (game, i) {
+    return {
+      id: game.id,
+      title: game.name,
+      start: game.start_date,
+      end: game.start_date + gameDuration(game),
+      url: '/games/' + game.id + '/edit'
+        // className: CSS class
+        // source: ?
+        // color: changer de couleur en fonction de la piste ?
+    }
+  });
+}
+
+function gameDuration(game) {
+  return AVERAGE_DURATION * game.teams.length * _.reduce(game.teams, function (m, team) {
+    return m + team.players.length;
+  }, 0) * 60 * 1000; // min to ms
+}
