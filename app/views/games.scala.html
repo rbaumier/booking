@@ -4,8 +4,8 @@
 
 @main("Réservations") {
 
-  <h1>Réservations</h1>
-
+  <h1 class="home-title">Réservations</h1>
+  <a class="btn btn-primary newgame" href="@routes.Games.form()">Nouvelle réservation</a>
   <div id="calendar"></div>
 
   @*<ul>*@
@@ -17,6 +17,4 @@
   @*</li>*@
   @*}*@
   @*</ul>*@
-
-  <a class="btn btn-primary" href="@routes.Games.form()">Nouvelle réservation</a>
 }
