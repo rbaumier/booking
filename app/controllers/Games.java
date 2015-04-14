@@ -1,24 +1,16 @@
 package controllers;
 
 import models.Game;
-import models.Player;
-import models.Team;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Games extends Controller {
   static Form<Game> gameForm = Form.form(Game.class);
 
-  public static Result list() {
-    return ok(games.render(Game.all()));
+  public static Result index() {
+    return ok(games.render());
   }
 
   public static Result create() {
@@ -39,5 +31,10 @@ public class Games extends Controller {
   public static Result delete(long id) {
     Game.delete(id);
     return redirect("/games");
+  }
+
+  // returns all games as JSON for AJAX request
+  public static Result getAll() {
+    return ok(games.render());
   }
 }
