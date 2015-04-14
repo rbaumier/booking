@@ -17,6 +17,7 @@ public class Game extends Model {
   public int alley;
   public String name;
 
+  @Required
   @Formats.DateTime(pattern="yyyy-MM-dd'T'HH:mm")
   public Date start_date;
 

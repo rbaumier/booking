@@ -31,7 +31,7 @@ public class Games extends Controller {
 
   public static Result delete(long id) {
     Game.delete(id);
-    return index();
+    return redirect("/games");
   }
 
   // returns all games as JSON for AJAX request

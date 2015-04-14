@@ -2,9 +2,32 @@
 
 @import views.html.helper._
 
-@main("Créer une réservation") {
+@main("Créer une réservation", scripts) {
+
+
   @form(routes.Games.delete(id)) {
-    <button class="btn btn-danger" type="submit">Supprimer</button>
+  <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Confirmer la suppression</h4>
+        </div>
+
+        <div class="modal-body">
+          <p>Vous êtes sur le point de supprimer cette réservation.</p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          <button class="btn btn-danger btn-ok" type="submit">Confirmer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-danger delete-button" data-toggle="modal" data-target="#confirm-delete">Supprimer</button>
   }
 
   @form(routes.Games.update(id)) {
@@ -37,4 +60,8 @@
     <button class="btn btn-primary" type="submit">Réserver</button>
     <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
   }
+}
+
+@scripts = {
+  <script src="@routes.Assets.at("javascripts/forms.js")" type="text/javascript"></script>
 }
