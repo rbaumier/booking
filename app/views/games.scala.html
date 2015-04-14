@@ -2,21 +2,27 @@
 
 @import helper._
 
-@main("Réservations") {
+@main("Réservations", scripts) {
   @*DEBUG*@
   <ul>
-  @for(game <- games) {
-    <li> @game.name
-    @form(routes.Games.delete(game.id)) {
-  <button class="btn btn-danger" type="submit">Delete</button>
-  }
-  </li>
-  }
+    @for(game <- games) {
+      <li>
+        @game.name
+        @form(routes.Games.delete(game.id)) {
+          <button class="btn btn-danger" type="submit">Delete</button>
+        }
+      </li>
+    }
   </ul>
   @*END DEBUG*@
-
 
   <h1 class="home-title booking-title">Réservations</h1>
   <a class="btn btn-primary newgame" href="@routes.Games.form()">Nouvelle réservation</a>
   <div id="calendar"></div>
+}
+
+@scripts = {
+  <script src="@routes.Assets.at("libs/fullcalendar/fullcalendar-2.3.1.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.at("libs/fullcalendar/lang-all.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.at("javascripts/calendar.js")" type="text/javascript"></script>
 }
