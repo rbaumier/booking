@@ -2,6 +2,7 @@ package controllers;
 
 import models.Game;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
@@ -35,6 +36,6 @@ public class Games extends Controller {
 
   // returns all games as JSON for AJAX request
   public static Result getAll() {
-    return ok(games.render());
+    return ok(Json.toJson(Game.all()));
   }
 }
