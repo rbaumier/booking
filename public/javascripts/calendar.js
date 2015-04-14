@@ -1,5 +1,6 @@
 var calendar = $('#calendar');
 var AVERAGE_DURATION = 10; // in minutes => https://answers.yahoo.com/question/index?qid=20080802193426AAWE8pI
+var COLORS = ['#e59d6b', '#8c0706', '#bac26f', '#438dbb', '#c4502a', '#69a8da', '#5d5f78', '#8099b5', '#4e54aa', '#2e6bf0'];
 
 function initCalendar(events) {
   calendar.fullCalendar({
@@ -34,16 +35,16 @@ function initCalendar(events) {
 
 // http://fullcalendar.io/docs/event_data/Event_Object/
 function toEventObject(games) {
-  return _.map(games, function (game, i) {
+  return _.map(games, function (game) {
     return {
       id: game.id,
       title: game.name,
       start: game.start_date,
       end: game.start_date + gameDuration(game),
-      url: '/games/' + game.id + '/edit'
-        // className: CSS class
-        // source: ?
-        // color: changer de couleur en fonction de la piste ?
+      url: '/games/' + game.id + '/edit',
+      // className: CSS class
+      // source: ?
+      color: COLORS[game.alley + 1]
     }
   });
 }
