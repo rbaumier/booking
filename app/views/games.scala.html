@@ -3,18 +3,7 @@
 @import helper._
 
 @main("Réservations") {
-
-  <h1 class="home-title">Réservations</h1>
+  <h1 class="home-title booking-title">Réservations</h1>
   <a class="btn btn-primary newgame" href="@routes.Games.form()">Nouvelle réservation</a>
   <div id="calendar"></div>
-
-  @*<ul>*@
-  @*//  @for(booking <- games) {*@
-  @*//    *@@*<li> @booking.name*@
-  @*//    @form(routes.Bookings.delete(booking.id)) {*@
-  @*<button class="btn btn-danger" type="submit">Delete</button>*@
-  @*}*@
-  @*</li>*@
-  @*}*@
-  @*</ul>*@
 }

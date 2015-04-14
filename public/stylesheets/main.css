@@ -4,8 +4,11 @@
 
 .home-title {
   margin-bottom: 45px;
-  display: inline-block;
 }
+
+  .booking-title {
+    display: inline-block;
+  }
 
 .newgame {
   margin-top: 20px;
