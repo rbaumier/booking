@@ -8,10 +8,12 @@ GET         /                           controllers.Application.index
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file               controllers.Assets.at(path="/public", file)
 
-# games
+# Games
 GET         /games                   controllers.Games.list()
 GET         /games/create            controllers.Games.form()
 POST        /games                   controllers.Games.create()
 POST        /games/:id/delete        controllers.Games.delete(id: Long)
 
-
+# Stats
+GET         /stats                   controllers.Statistics.index()
+GET         /stats/:id               controllers.Statistics.get(id: Long)
