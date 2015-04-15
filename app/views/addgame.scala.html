@@ -4,6 +4,7 @@
 @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
 
   @main("Créer une réservation", scripts) {
+  <h1 class="home-title">Créer une réservation</h1>
 
   @helper.form(routes.Games.create(), 'class -> "form-horizontal") {
 
@@ -21,20 +22,22 @@
       'type -> "datetime-local"
     )
 
-
     @inputText(gameForm("teams[0].name"),
-      '_label -> "Nom d'équipe"
+      '_label -> "Nom d'équipe",
+      'class -> "teams"
     )
-
-    <a class="btn btn-default add-team">+</a>
-    <a class="btn btn-default delete-team">-</a>
 
     @inputText(gameForm("teams[0].players[0].name"),
-      '_label -> "Nom du joueur"
+      '_label -> "Nom du joueur",
+      'class -> "players"
     )
 
-    <button class="btn btn-primary" type="submit">Réserver</button>
-    <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
+    <div class="control-group form-operations">
+      <div class="controls">
+        <button class="btn btn-primary" type="submit">Réserver</button>
+        <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
+      </div>
+    </div>
   }
 }
 
