@@ -17,8 +17,8 @@ $('#confirm-delete').on('show.bs.modal', function (e) {
 $('.input-team').parent().append(addPlayerButton);
 $('.players').parent().append(deletePlayerButton);
 $('.add-player').click(function () {
-  var index = $(this).siblings().first().attr('id').match(/^\d+|\d+\b|\d+(?=\w)/g)[0];
-  var players = $('#teams').find('#teams_' + index + '_players').children();
+  var index = getIndex.call($(this));
+  var players = getPlayers(index);
   var playerlength = players.length;
 
   if (playerlength === 1) enableDelete(index, true);
@@ -28,6 +28,34 @@ $('.add-player').click(function () {
   var newPlayer = incrementIDs(players.last().clone());
   $('#teams_' + index + '_players').append(newPlayer);
 });
+
+// we need to do this because players are dynamically created, thus not binded to event
+$('body').on('click', '.delete-player', function () {
+  var index = getIndex.call($(this));
+  var players = getPlayers(index);
+
+  if (players.length === 1) return;
+  if (players.length === 2) enableDelete(index, false);
+  $(this).parent().parents().eq(1).remove();
+});
+
+
+// buttons controls
+function enableButton(button, index, enable) {
+  var element = $('#teams').children().eq(index).find(button);
+  if (enable) return element.removeClass('disabled');
+  element.addClass('disabled');
+}
+
+function enableAdd(index, enable) {
+  enableButton('.add-player', index, enable);
+}
+
+function enableDelete(index, enable) {
+  enableButton('.delete-player', index, enable);
+}
+
+/// Helpers
 
 // we need to do this because play use this id to render/save form
 function incrementIDs(player) {
@@ -55,17 +83,10 @@ function toPlayFormat(id)  {
   }).str + ']';
 }
 
-// buttons controls
-function enableButton(button, index, enable) {
-  var element = $('#teams').children().eq(index).find(button);
-  if (enable) return element.removeClass('disabled');
-  element.addClass('disabled');
+function getIndex() {
+  return this.siblings().first().attr('id').match(/^\d+|\d+\b|\d+(?=\w)/g)[0];
 }
 
-function enableAdd(index, enable) {
-  enableButton('.add-player', index, enable);
-}
-
-function enableDelete(index, enable) {
-  enableButton('.delete-player', index, enable);
+function getPlayers(index) {
+  return $('#teams').find('#teams_' + index + '_players').children();
 }
