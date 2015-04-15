@@ -1,9 +1,12 @@
 @(gameForm: Form[Game])
 
 @import views.html.helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
 
-@main("Créer une réservation", scripts) {
-  @form(routes.Games.create()) {
+  @main("Créer une réservation", scripts) {
+
+  @helper.form(routes.Games.create(), 'class -> "form-horizontal") {
+
     @inputText(gameForm("name"),
       '_label -> "Nom de la partie"
     )
@@ -18,17 +21,17 @@
       'type -> "datetime-local"
     )
 
-    @for(i <- 0 to 1) {
-      @inputText(gameForm("teams[" + i +"].name"),
-        '_label -> "Nom d'équipe"
-      )
 
-      @for(j <- 0 to 1) {
-        @inputText(gameForm("teams[" + i + "].players[" + j + "].name"),
-          '_label -> "Nom du joueur"
-        )
-      }
-    }
+    @inputText(gameForm("teams[0].name"),
+      '_label -> "Nom d'équipe"
+    )
+
+    <a class="btn btn-default add-team">+</a>
+    <a class="btn btn-default delete-team">-</a>
+
+    @inputText(gameForm("teams[0].players[0].name"),
+      '_label -> "Nom du joueur"
+    )
 
     <button class="btn btn-primary" type="submit">Réserver</button>
     <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
