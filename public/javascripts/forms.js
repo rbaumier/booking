@@ -10,8 +10,8 @@ $('#confirm-delete').on('show.bs.modal', function (e) {
 });
 
 // dynamic form (add/delete lines with +/- buttons
-$('.teams').parent().append('<a class="btn btn-default delete-team">-</a><a class="btn btn-default add-team">+</a>');
-$('.players').parent().append('<a class="btn btn-default delete-player">-</a><a class="btn btn-default add-player">+</a>');
+$('.teams').parent().append('<a class="btn btn-default add-player">Ajouter un joueur</a>');
+$('.players').parent().append('<a class="btn btn-default delete-player">-</a>');
 
 //$('.add-team').click(function() {
 //  console.log($(this).parent());

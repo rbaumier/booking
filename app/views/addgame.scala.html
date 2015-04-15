@@ -23,12 +23,22 @@
     )
 
     @inputText(gameForm("teams[0].name"),
-      '_label -> "Nom d'équipe",
+      '_label -> "Equipe 1",
       'class -> "teams"
     )
 
     @inputText(gameForm("teams[0].players[0].name"),
-      '_label -> "Nom du joueur",
+      '_label -> "Joueur",
+      'class -> "players"
+    )
+
+    @inputText(gameForm("teams[1].name"),
+      '_label -> "Equipe 2",
+      'class -> "teams"
+    )
+
+    @inputText(gameForm("teams[1].players[0].name"),
+      '_label -> "Joueur",
       'class -> "players"
     )
 
