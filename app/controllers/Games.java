@@ -51,9 +51,12 @@ public class Games extends Controller {
       return badRequest(addgame.render(boundForm));
     }
     Game game = boundForm.get();
-    game.id = id;
-    game.save();
-    return index();
 
+    // Yup... since ebeans needs a bidirectionnal relation for updates and we have a stackoverflow while generating a json because of that,
+    // we will use this ugly trick as a temporary/permanent solution.
+    // http://bit.ly/1IKbC24
+    game.delete(id);
+    game.save();
+    return redirect("/games");
   }
 }
