@@ -22,32 +22,39 @@
       'type -> "datetime-local"
     )
 
-    <div id="team1">
-      @inputText(gameForm("teams[0].name"),
-        '_label -> "Equipe 1",
-        'class -> "teams"
-      )
+    <div id="teams">
+      <div id="teams_0">
+        @inputText(gameForm("teams[0].name"),
+          '_label -> "Equipe 1",
+          'class -> "input-team"
+        )
 
-      <div id="teams_0_players">
-        <div id="teams_0_players_0">
-          @inputText(gameForm("teams[0].players[0].name"),
-            '_label -> "Joueur",
-            'class -> "players"
-          )
+        <div id="teams_0_players">
+          <div id="teams_0_players_0">
+            @inputText(gameForm("teams[0].players[0].name"),
+              '_label -> "Joueur",
+              'class -> "players"
+            )
+          </div>
+        </div>
+      </div>
+
+      <div id="teams_1">
+        @inputText(gameForm("teams[1].name"),
+          '_label -> "Equipe 2",
+          'class -> "input-team"
+        )
+
+        <div id="teams_1_players">
+          <div id="teams_1_players_0">
+            @inputText(gameForm("teams[1].players[0].name"),
+              '_label -> "Joueur",
+              'class -> "players"
+            )
+          </div>
         </div>
       </div>
     </div>
-
-    @inputText(gameForm("teams[1].name"),
-      '_label -> "Equipe 2",
-      'class -> "teams"
-    )
-
-    @inputText(gameForm("teams[1].players[0].name"),
-      '_label -> "Joueur",
-      'class -> "players"
-    )
-
     <div class="control-group form-operations">
       <div class="controls">
         <button class="btn btn-primary" type="submit">Réserver</button>

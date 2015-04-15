@@ -14,15 +14,20 @@ $('#confirm-delete').on('show.bs.modal', function (e) {
 });
 
 // dynamic form (add/delete lines with +/- buttons
-$('.teams').parent().append(addPlayerButton);
+$('.input-team').parent().append(addPlayerButton);
 $('.players').parent().append(deletePlayerButton);
-var player;
 $('.add-player').click(function () {
-  player = $(this);
-  var lastPlayer = $(this).parents().eq(2).children().last().children().last();
-  var newPlayer = incrementIDs(lastPlayer.clone());
+  var index = 0;
+  var players = $('#teams').find('#teams_' + 0 + '_players').children();
+
+  if (players.length === 1) enableDelete(index, true);
+  if (players.length >= 5) return;
+
+  var newPlayer = incrementIDs(players.last().clone());
   $('#teams_0_players').append(newPlayer);
-  $('.add-player').first().parent().parent().parent().find('.delete-player').removeClass("disabled", false);
+  if (players.length >= 4) {
+    enableAdd(index, false);
+  }
 });
 
 // we need to do this because play use this id to render/save form
@@ -36,14 +41,32 @@ function incrementIDs(player) {
   return player;
 }
 
-function toPlayFormat(id) {
-  return id.split('').reduce(function(m, ltr) {
-    if(ltr === '_') {
+function toPlayFormat(id)  {
+  return id.split('').reduce(function (m, ltr) {
+    if (ltr === '_') {
       m.even ? m.str += '[' : m.str += '].';
       m.even = !m.even;
     } else {
       m.str += ltr;
     }
     return m;
-  }, {even: true, str: ''}).str + ']';
+  }, {
+    even: true,
+    str: ''
+  }).str + ']';
+}
+
+// buttons controls
+function enableButton(button, index, enable) {
+  var element = $('#teams').children().eq(index).find(button);
+  if(enable) return element.removeClass('disabled');
+  element.addClass('disabled');
+}
+
+function enableAdd(index, enable) {
+  enableButton('.add-player', index, enable);
+}
+
+function enableDelete(index, enable) {
+  enableButton('.delete-player', index, enable);
 }
