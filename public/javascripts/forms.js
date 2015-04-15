@@ -1,10 +1,14 @@
 'use strict';
 
 $('#start_date').val("2015-04-15T15:00"); // DEBUG: autofill date-time
+
+/// Init
 var addPlayerButton = '<a class="btn btn-default add-player">Ajouter un joueur</a>';
 var deletePlayerButton = '<a class="btn btn-default delete-player disabled">-</a>';
+$('.input-team').parent().append(addPlayerButton);
+$('.players').parent().append(deletePlayerButton);
 
-// modal to confirm deletion
+/// Modal to confirm deletion
 $('.delete-button').click(function (e)  {
   e.preventDefault();
 });
@@ -13,9 +17,7 @@ $('#confirm-delete').on('show.bs.modal', function (e) {
   $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 });
 
-// dynamic form (add/delete lines with +/- buttons
-$('.input-team').parent().append(addPlayerButton);
-$('.players').parent().append(deletePlayerButton);
+/// dynamic form (add/delete lines with +/- buttons
 $('.add-player').click(function () {
   var index = getIndex.call($(this));
   var players = getPlayers(index);
@@ -26,6 +28,7 @@ $('.add-player').click(function () {
   if (playerlength === 5) return;
 
   var newPlayer = incrementIDs(players.last().clone());
+  newPlayer.find('input').val('');
   $('#teams_' + index + '_players').append(newPlayer);
 });
 
@@ -40,7 +43,7 @@ $('body').on('click', '.delete-player', function () {
 });
 
 
-// buttons controls
+/// Buttons controls
 function enableButton(button, index, enable) {
   var element = $('#teams').children().eq(index).find(button);
   if (enable) return element.removeClass('disabled');
