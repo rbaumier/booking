@@ -16,9 +16,8 @@ $('#confirm-delete').on('show.bs.modal', function (e) {
 // dynamic form (add/delete lines with +/- buttons
 $('.input-team').parent().append(addPlayerButton);
 $('.players').parent().append(deletePlayerButton);
-var that;
 $('.add-player').click(function () {
-  var index = $(this).siblings().first().attr('id').charAt(6);
+  var index = $(this).siblings().first().attr('id').match(/^\d+|\d+\b|\d+(?=\w)/g)[0];
   var players = $('#teams').find('#teams_' + index + '_players').children();
 
   if (players.length === 1) enableDelete(index, true);
