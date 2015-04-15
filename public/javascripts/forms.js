@@ -19,15 +19,14 @@ $('.players').parent().append(deletePlayerButton);
 $('.add-player').click(function () {
   var index = $(this).siblings().first().attr('id').match(/^\d+|\d+\b|\d+(?=\w)/g)[0];
   var players = $('#teams').find('#teams_' + index + '_players').children();
+  var playerlength = players.length;
 
-  if (players.length === 1) enableDelete(index, true);
-  if (players.length >= 5) return;
+  if (playerlength === 1) enableDelete(index, true);
+  if (playerlength === 4) enableAdd(index, false);
+  if (playerlength === 5) return;
 
   var newPlayer = incrementIDs(players.last().clone());
   $('#teams_' + index + '_players').append(newPlayer);
-  if (players.length >= 4) {
-    enableAdd(index, false);
-  }
 });
 
 // we need to do this because play use this id to render/save form
