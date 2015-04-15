@@ -16,15 +16,16 @@ $('#confirm-delete').on('show.bs.modal', function (e) {
 // dynamic form (add/delete lines with +/- buttons
 $('.input-team').parent().append(addPlayerButton);
 $('.players').parent().append(deletePlayerButton);
+var that;
 $('.add-player').click(function () {
-  var index = 0;
-  var players = $('#teams').find('#teams_' + 0 + '_players').children();
+  var index = $(this).siblings().first().attr('id').charAt(6);
+  var players = $('#teams').find('#teams_' + index + '_players').children();
 
   if (players.length === 1) enableDelete(index, true);
   if (players.length >= 5) return;
 
   var newPlayer = incrementIDs(players.last().clone());
-  $('#teams_0_players').append(newPlayer);
+  $('#teams_' + index + '_players').append(newPlayer);
   if (players.length >= 4) {
     enableAdd(index, false);
   }
@@ -59,7 +60,7 @@ function toPlayFormat(id)  {
 // buttons controls
 function enableButton(button, index, enable) {
   var element = $('#teams').children().eq(index).find(button);
-  if(enable) return element.removeClass('disabled');
+  if (enable) return element.removeClass('disabled');
   element.addClass('disabled');
 }
 
