@@ -42,7 +42,7 @@
 
     @select(gameForm("alley"),
       (1 to 10).map {n => (n.toString, n.toString) },
-      '_label -> "Numéro de piste"
+      '_label -> "Piste"
     )
 
     @inputText(gameForm("start_date"),

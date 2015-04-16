@@ -22,8 +22,8 @@ public class Game extends Model {
   public String name;
 
   @Required
-  @Pattern(value = "[0-9.+]+",
-  message="Vous devez spécifier un numéro de téléphone valide.") // Ok, this is not enough
+  @Pattern(value = "/^0[1-6]{1}(([0-9]{2}){4})|((\\s[0-9]{2}){4})|((-[0-9]{2}){4})$/", // french phone numbers validation
+  message="Vous devez spécifier un numéro de téléphone valide.")
   public String phone;
 
   @Formats.DateTime(pattern="yyyy-MM-dd'T'HH:mm")
