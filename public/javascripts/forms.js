@@ -27,9 +27,10 @@ $('.add-player').click(function () {
   if (playerlength === 4) enableAdd(index, false);
   if (playerlength === 5) return;
 
-  var newPlayer = incrementIDs(players.last().clone());
+  var newPlayer = players.last().clone();
   newPlayer.find('input').val('');
   $('#teams_' + index + '_players').append(newPlayer);
+  updateIDs(getPlayers(index));
 });
 
 // we need to do this because players are dynamically created, thus not binded to event
@@ -39,7 +40,9 @@ $('body').on('click', '.delete-player', function () {
 
   if (players.length === 1) return;
   if (players.length === 2) enableDelete(index, false);
-  $(this).parent().parents().eq(1).remove();
+
+  $(this).parent().parents().eq(2).remove();
+  updateIDs(getPlayers(index));
 });
 
 
@@ -61,14 +64,17 @@ function enableDelete(index, enable) {
 /// Helpers
 
 // we need to do this because play use this id to render/save form
-function incrementIDs(player) {
-  var current = player.attr('id');
-  var id = current.replace(/[0-9]+(?!.*[0-9])/, parseInt(current.match(/[0-9]+(?!.*[0-9])/), 10) + 1);
-  player.attr('id', id);
-  player.children().children().first().attr('for', id + '_name');
-  player.find('input').attr('id', id + '_name');
-  player.find('input').attr('name', toPlayFormat(id) + '.name');
-  return player;
+function updateIDs(players) {
+  return $.each(players, function(index, player) {
+    player = $(player);
+    var current = player.attr('id');
+    var id = current.replace(/[0-9]+(?!.*[0-9])/, index);
+    player.attr('id', id);
+    player.children().children().first().attr('for', id + '_name');
+    player.find('input').attr('id', id + '_name');
+    player.find('input').attr('name', toPlayFormat(id) + '.name');
+    console.log(player.attr('id'));
+  });
 }
 
 function toPlayFormat(id)  {
