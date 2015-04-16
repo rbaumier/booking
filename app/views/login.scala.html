@@ -1,0 +1,39 @@
+@(loginForm: Form[Application.Login])
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+@import views.html.helper._
+
+@main("Se connecter") {
+  @helper.form(routes.Application.authenticate, 'class -> "form-horizontal") {
+
+    <h1 class="home-title">Se connecter</h1>
+
+    @if(flash.contains("success")) {
+      <p class="success">
+        @flash.get("success")
+      </p>
+    }
+
+    @if(loginForm.hasGlobalErrors) {
+      <p class="error">
+      @loginForm.globalError.message
+      </p>
+    }
+
+    @inputText(loginForm("username"),
+      '_label -> "Nom d'utilisateur"
+    )
+
+    @inputText(loginForm("Mot de passe"),
+      '_label -> "Joueur",
+      'type -> "password"
+    )
+
+
+    <div class="form-group form-operations">
+      <div class="controls">
+        <button class="btn btn-primary submit-booking" type="submit">Connexion</button>
+      </div>
+    </div>
+  }
+}

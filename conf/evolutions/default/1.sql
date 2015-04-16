@@ -3,6 +3,13 @@
 
 # --- !Ups
 
+create table admin (
+  id                        number(19) not null,
+  username                  varchar2(255),
+  password                  varchar2(255),
+  constraint pk_admin primary key (id))
+;
+
 create table game (
   id                        number(19) not null,
   alley                     number(10),
@@ -37,6 +44,8 @@ create table team (
   constraint pk_team primary key (id))
 ;
 
+create sequence admin_seq;
+
 create sequence game_seq;
 
 create sequence player_seq;
@@ -56,6 +65,8 @@ create index ix_team_game_3 on team (game_id);
 
 # --- !Downs
 
+drop table admin cascade constraints purge;
+
 drop table game cascade constraints purge;
 
 drop table player cascade constraints purge;
@@ -63,6 +74,8 @@ drop table player cascade constraints purge;
 drop table stats cascade constraints purge;
 
 drop table team cascade constraints purge;
+
+drop sequence admin_seq;
 
 drop sequence game_seq;
 
