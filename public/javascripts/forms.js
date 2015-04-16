@@ -1,6 +1,6 @@
 'use strict';
 
-$('#start_date').val("2015-04-15T15:00"); // DEBUG: autofill date-time
+$('#start_date').val("2015-04-16T15:00"); // DEBUG: autofill date-time
 
 /// Init
 var addPlayerButton = '<a class="btn btn-default add-player">Ajouter un joueur</a>';
@@ -30,19 +30,21 @@ $('.add-player').click(function () {
   var newPlayer = players.last().clone();
   newPlayer.find('input').val('');
   $('#teams_' + index + '_players').append(newPlayer);
-  updateIDs(getPlayers(index));
+  updateAttrs(getPlayers(index));
 });
 
-// we need to do this because players are dynamically created, thus not binded to event
+// we need to do this because players are dynamically created, thus not binded to events
 $('body').on('click', '.delete-player', function () {
   var index = getIndex.call($(this));
   var players = getPlayers(index);
+  var playerlength = players.length;
 
-  if (players.length === 1) return;
-  if (players.length === 2) enableDelete(index, false);
+  if (playerlength === 1) return;
+  if (playerlength === 2) enableDelete(index, false);
+  if (playerlength === 5) enableAdd(index, true);
 
   $(this).parent().parents().eq(2).remove();
-  updateIDs(getPlayers(index));
+  updateAttrs(getPlayers(index));
 });
 
 
@@ -63,8 +65,8 @@ function enableDelete(index, enable) {
 
 /// Helpers
 
-// we need to do this because play use this id to render/save form
-function updateIDs(players) {
+// we need to do this because play use those attrs to render/save form
+function updateAttrs(players) {
   return $.each(players, function(index, player) {
     player = $(player);
     var current = player.attr('id');
