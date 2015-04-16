@@ -2,7 +2,6 @@ package models;
 
 import javax.persistence.*;
 import play.db.ebean.*;
-import com.avaje.ebean.*;
 
 @Entity
 public class Admin extends Model {
@@ -21,7 +20,13 @@ public class Admin extends Model {
     String.class, Admin.class
   );
 
-  public static Object authenticate(String username, String password) {
-    return find.where().eq("username", username).eq("password", password).findUnique();
+  public static boolean checkPassword(String password, String maybePassword) {
+    return password.equals(maybePassword);
+  }
+
+  public static Admin authenticate(String username, String password) {
+    Admin user = find.where().eq("username", username).findUnique();
+    System.out.println(user);
+    return user != null && checkPassword(user.password, password) ? user : null;
   }
 }

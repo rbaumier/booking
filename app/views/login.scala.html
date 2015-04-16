@@ -6,7 +6,7 @@
 @main("Se connecter") {
   @helper.form(routes.Application.authenticate, 'class -> "form-horizontal") {
 
-    <h1 class="home-title">Se connecter</h1>
+    <h1 class="home-title">Merci de vous connecter pour accéder aux réservations</h1>
 
     @if(flash.contains("success")) {
       <p class="success">
@@ -16,7 +16,7 @@
 
     @if(loginForm.hasGlobalErrors) {
       <p class="error">
-      @loginForm.globalError.message
+        @loginForm.globalError.message
       </p>
     }
 
@@ -24,11 +24,10 @@
       '_label -> "Nom d'utilisateur"
     )
 
-    @inputText(loginForm("Mot de passe"),
-      '_label -> "Joueur",
+    @inputText(loginForm("password"),
+      '_label -> "Mot de passe",
       'type -> "password"
     )
-
 
     <div class="form-group form-operations">
       <div class="controls">
