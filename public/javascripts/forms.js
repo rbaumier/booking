@@ -10,10 +10,7 @@ $('.players').parent().append(deletePlayerButton);
 
 // enable/disable delete button depending of players number
 $('.team').each(function(index, team){
-  var deleteButtons = $(team).find('.delete-player');
-  if(deleteButtons.length < 1) {
-   enableDelete(index, true);
-  }
+  $(team).find('.delete-player').length > 1 ? enableDelete(index, true) : false;
 });
 
 // enable/disable add button depending of players number
