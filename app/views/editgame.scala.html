@@ -1,6 +1,7 @@
 @(gameForm: Form[Game], id: Long, game: Game)
 
 @import views.html.helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
 
 @main("Editer une réservation", scripts) {
   @form(routes.Games.delete(id)) {
@@ -53,7 +54,6 @@
         )
       }
     }
-
 
     <button class="btn btn-primary" type="submit">Réserver</button>
     <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
