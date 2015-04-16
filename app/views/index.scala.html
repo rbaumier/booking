@@ -5,7 +5,13 @@
 @main("Bowling") {
   <div class="jumbotron">
     <h1>Accueil</h1>
-    <img class="banner"></img>
-    <p><a class="btn btn-primary btn-lg" href="@routes.Games.index()" role="button">Accéder aux réservations</a></p>
+    <img class="banner"/>
+    @defining(session.get("username")) { username =>
+      @if(username) {
+        <p><a class="btn btn-primary btn-lg" href="@routes.Games.index()" role="button">Accéder aux réservations</a></p>
+      } else {
+        <p><a class="btn btn-primary btn-lg" href="@routes.Authentication.form()" role="button">Connexion</a></p>
+      }
+    }
   </div>
 }
