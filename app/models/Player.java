@@ -9,6 +9,8 @@ import javax.persistence.*;
 public class Player extends Model {
   @Id
   public long id;
+
+  @Required(message = "Vous devez spécifier un nom de joueur.")
   public String name;
 
   @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)

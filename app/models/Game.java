@@ -1,12 +1,9 @@
 package models;
 
-import org.joda.time.DateTime;
 import play.data.format.Formats;
 import play.data.validation.Constraints.*;
 import play.db.ebean.Model;
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -14,10 +11,15 @@ import java.util.List;
 public class Game extends Model {
   @Id
   public long id;
-  public int alley;
-  public String name;
 
   @Required
+  @Min(value = 1, message = "Le numéro de piste doit être compris entre 1 et 10 inclus.")
+  @Max(value = 10, message = "Le numéro de piste doit être compris entre 1 et 10 inclus.")
+  public int alley;
+
+  @Required(message = "Vous devez spécifier un nom de partie.")
+  public String name;
+
   @Formats.DateTime(pattern="yyyy-MM-dd'T'HH:mm")
   public Date start_date;
 
