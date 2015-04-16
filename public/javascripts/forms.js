@@ -73,7 +73,6 @@ function updateIDs(players) {
     player.children().children().first().attr('for', id + '_name');
     player.find('input').attr('id', id + '_name');
     player.find('input').attr('name', toPlayFormat(id) + '.name');
-    console.log(player.attr('id'));
   });
 }
 
