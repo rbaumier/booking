@@ -27,10 +27,9 @@ function initCalendar(events) {
       initCalendar(toEventObject(data));
     },
     error: function () {
-      console.log('cannot recover games'); // TODO: bootstrap notify
+      $('.container').append('<div class="alert alert-danger" role="alert">Oops, nous n\'avons pas réussi à récupérer les réservations...</div>');
     }
   });
-
 }());
 
 // http://fullcalendar.io/docs/event_data/Event_Object/
