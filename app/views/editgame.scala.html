@@ -3,7 +3,11 @@
 @import views.html.helper._
 @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
 
-@main("Editer une réservation", scripts) {
+@main("Modifier une réservation", scripts) {
+  <h1 class="home-title inline-title">Modifier une réservation
+    <button class="btn btn-danger delete-button" data-toggle="modal" data-target="#confirm-delete">Supprimer</button>
+  </h1>
+
   @form(routes.Games.delete(id)) {
   <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -25,11 +29,9 @@
       </div>
     </div>
   </div>
-
-  <button class="btn btn-danger delete-button" data-toggle="modal" data-target="#confirm-delete">Supprimer</button>
   }
 
-  @form(routes.Games.update(id)) {
+  @helper.form(routes.Games.update(id), 'class -> "form-horizontal") {
     @inputText(gameForm("name"),
       '_label -> "Nom de la partie"
     )
@@ -45,14 +47,21 @@
     )
 
     @for((team, index) <- game.teams.zipWithIndex) {
-      @inputText(gameForm("teams[" + index +"].name"),
-        '_label -> ("Équipe " + (index + 1))
-      )
-      @for((player, idx) <- team.players.zipWithIndex) {
-        @inputText(gameForm("teams[" + index +"].players[" + idx + "].name"),
-          '_label -> "Joueur"
+      <div class="team" id="teams_@index">
+        @inputText(gameForm("teams[" + index +"].name"),
+          '_label -> ("Équipe " + (index + 1)),
+          'class -> "input-team"
         )
-      }
+
+        <div id="teams_@{index}_players">
+          @for((player, idx) <- team.players.zipWithIndex) {
+            <div id="teams_@{index}_players_@idx">
+              @inputText(gameForm("teams[" + index +"].players[" + idx + "].name"),
+                '_label -> "Joueur"
+              )
+            </div>
+          }
+      </div>
     }
 
     <button class="btn btn-primary" type="submit">Réserver</button>
