@@ -9,10 +9,10 @@ var deletePlayerButton = '<a class="btn btn-default delete-player disabled">-</a
   $('.players').parent().append(deletePlayerButton);
 
   // enable/disable add/delete button depending of players number
-  $('.team').each(function(index, team){
+  $('.team').each(function (index, team) {
     var playerslength = getPlayers(index).length;
-    if(playerslength > 1) enableDelete(index);
-    if(playerslength === 5) enableAdd(index, false);
+    if (playerslength > 1) enableDelete(index);
+    if (playerslength === 5) enableAdd(index, false);
   });
 }(addPlayerButton, deletePlayerButton));
 
@@ -58,7 +58,7 @@ $('body').on('click', '.delete-player', function () {
 
 /// Buttons controls
 function enableButton(button, index, enable) {
-  if(_.isUndefined(enable)) enable = true;
+  if (_.isUndefined(enable)) enable = true;
   var element = $('#teams').children().eq(index).find(button);
   if (enable) return element.removeClass('disabled');
   element.addClass('disabled');
@@ -76,7 +76,7 @@ function enableDelete(index, enable) {
 
 // we need to do this because play use those attrs to render/save form
 function updateAttrs(players) {
-  return $.each(players, function(index, player) {
+  return $.each(players, function (index, player) {
     player = $(player);
     var current = player.attr('id');
     var id = current.replace(/[0-9]+(?!.*[0-9])/, index);
