@@ -1,9 +1,11 @@
 package controllers;
 
-import models.Admin;
 import play.Routes;
 import play.mvc.*;
 import views.html.index;
+import play.mvc.Http.*;
+import play.libs.F.*;
+import views.html.notFound;
 
 public class Application extends Controller {
   public static Result index() {
@@ -16,5 +18,4 @@ public class Application extends Controller {
     response().setContentType("text/javascript");
     return ok(Routes.javascriptRouter("JSRouter", routes.javascript.Games.getAll()));
   }
-
 }

@@ -5,6 +5,12 @@
   background-image: url('../images/banner.jpg');
 }
 
+.not-found-banner {
+  width: 700px;
+  height: 510px;
+  background-image: url('../images/404.jpg');
+}
+
 .error {
   color: red;
 }
