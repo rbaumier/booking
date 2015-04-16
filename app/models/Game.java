@@ -1,6 +1,7 @@
 package models;
 
 import play.data.format.Formats;
+
 import play.data.validation.Constraints.*;
 import play.db.ebean.Model;
 import javax.persistence.*;
@@ -19,6 +20,11 @@ public class Game extends Model {
 
   @Required(message = "Vous devez spécifier un nom de partie.")
   public String name;
+
+  @Required
+  @Pattern(value = "[0-9.+]+",
+  message="Vous devez spécifier un numéro de téléphone valide.") // Ok, this is not enough
+  public String phone;
 
   @Formats.DateTime(pattern="yyyy-MM-dd'T'HH:mm")
   public Date start_date;

@@ -36,6 +36,10 @@
       '_label -> "Nom de la partie"
     )
 
+    @inputText(gameForm("phone"),
+      '_label -> "Téléphone"
+    )
+
     @select(gameForm("alley"),
       (1 to 10).map {n => (n.toString, n.toString) },
       '_label -> "Numéro de piste"

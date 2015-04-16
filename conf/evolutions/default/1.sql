@@ -7,6 +7,7 @@ create table game (
   id                        number(19) not null,
   alley                     number(10),
   name                      varchar2(255),
+  phone                     varchar2(255),
   start_date                timestamp,
   constraint pk_game primary key (id))
 ;
