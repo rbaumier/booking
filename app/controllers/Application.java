@@ -1,11 +1,13 @@
 package controllers;
 
+import models.Admin;
 import play.Routes;
 import play.mvc.*;
 import views.html.index;
 
 public class Application extends Controller {
   public static Result index() {
+    // if account needed => new Admin("bowling", "bowling").save();
     return ok(index.render());
   }
 

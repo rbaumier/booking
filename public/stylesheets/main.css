@@ -26,6 +26,11 @@
   margin-top: 40px;
 }
 
+.success {
+  color: green;
+  font-weight: 500;
+}
+
 input {
   width: 200px;
 }

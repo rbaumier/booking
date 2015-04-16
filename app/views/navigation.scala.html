@@ -9,7 +9,13 @@
         <li><a href="@routes.Games.index()">Réservations</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="@routes.Application.logout()">Déconnexion</a></li>
+        @defining(session.get("username")) { username =>
+          @if(username) {
+            <li><a href="@routes.Authentication.logout()">Déconnexion</a></li>
+          } else {
+            <li><a href="@routes.Authentication.form()">Connexion</a></li>
+          }
+        }
       </ul>
     </div>
   </div>
