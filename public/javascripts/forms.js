@@ -8,6 +8,19 @@ var deletePlayerButton = '<a class="btn btn-default delete-player disabled">-</a
 $('.input-team').parent().append(addPlayerButton);
 $('.players').parent().append(deletePlayerButton);
 
+// enable/disable delete button depending of players number
+$('.team').each(function(index, team){
+  var deleteButtons = $(team).find('.delete-player');
+  if(deleteButtons.length < 1) {
+   enableDelete(index, true);
+  }
+});
+
+// enable/disable add button depending of players number
+
+
+
+
 /// Modal to confirm deletion
 $('.delete-button').click(function (e)  {
   e.preventDefault();
@@ -23,7 +36,7 @@ $('.add-player').click(function () {
   var players = getPlayers(index);
   var playerlength = players.length;
 
-  if (playerlength === 1) enableDelete(index, true);
+  if (playerlength === 1) enableDelete(index);
   if (playerlength === 4) enableAdd(index, false);
   if (playerlength === 5) return;
 
@@ -41,7 +54,7 @@ $('body').on('click', '.delete-player', function () {
 
   if (playerlength === 1) return;
   if (playerlength === 2) enableDelete(index, false);
-  if (playerlength === 5) enableAdd(index, true);
+  if (playerlength === 5) enableAdd(index);
 
   $(this).parent().parents().eq(2).remove();
   updateAttrs(getPlayers(index));
@@ -50,6 +63,7 @@ $('body').on('click', '.delete-player', function () {
 
 /// Buttons controls
 function enableButton(button, index, enable) {
+  if(_.isUndefined(enable)) enable = true;
   var element = $('#teams').children().eq(index).find(button);
   if (enable) return element.removeClass('disabled');
   element.addClass('disabled');

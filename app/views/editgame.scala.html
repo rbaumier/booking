@@ -46,26 +46,34 @@
       'type -> "datetime-local"
     )
 
-    @for((team, index) <- game.teams.zipWithIndex) {
-      <div class="team" id="teams_@index">
-        @inputText(gameForm("teams[" + index +"].name"),
-          '_label -> ("Équipe " + (index + 1)),
-          'class -> "input-team"
-        )
+    <div id="teams">
+      @for((team, index) <- game.teams.zipWithIndex) {
+        <div class="team" id="teams_@index">
+          @inputText(gameForm("teams[" + index +"].name"),
+            '_label -> ("Équipe " + (index + 1)),
+            'class -> "input-team"
+          )
 
-        <div id="teams_@{index}_players">
-          @for((player, idx) <- team.players.zipWithIndex) {
-            <div id="teams_@{index}_players_@idx">
-              @inputText(gameForm("teams[" + index +"].players[" + idx + "].name"),
-                '_label -> "Joueur"
-              )
-            </div>
-          }
+          <div id="teams_@{index}_players">
+            @for((player, idx) <- team.players.zipWithIndex) {
+              <div id="teams_@{index}_players_@idx">
+                @inputText(gameForm("teams[" + index +"].players[" + idx + "].name"),
+                  '_label -> "Joueur",
+                  'class -> "players"
+                )
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="form-group form-operations">
+      <div class="controls">
+        <button class="btn btn-primary" type="submit">Réserver</button>
+        <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
       </div>
-    }
-
-    <button class="btn btn-primary" type="submit">Réserver</button>
-    <a class="btn btn-default" href="@routes.Games.index()">Annuler</a>
+    </div>
   }
 }
 
