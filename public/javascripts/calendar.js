@@ -14,7 +14,7 @@ function initCalendar(events) {
     defaultView: 'agendaDay',
     buttonIcons: true, // show the prev/next text
     weekNumbers: true,
-    editable: true,
+    editable: false,
     events: events,
     minTime: "12:00",
     maxTime: "24:00"
