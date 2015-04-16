@@ -40,8 +40,9 @@ public class Games extends Controller {
   }
 
   public static Result edit(Long id) {
-    Form form = gameForm.fill(Game.find.ref(id));
-    return ok(editgame.render(form, id));
+    Game game = Game.find.ref(id);
+    Form form = gameForm.fill(game);
+    return ok(editgame.render(form, id, game));
   }
 
   public static Result update(long id) {
