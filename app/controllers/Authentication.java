@@ -21,6 +21,7 @@ public class Authentication extends Controller {
 
   public static Result login() {
     Form<Login> boundForm = loginForm.bindFromRequest();
+    System.out.println(boundForm);
     if(boundForm.hasErrors()) {
       return badRequest(login.render(boundForm));
     }
@@ -33,14 +34,11 @@ public class Authentication extends Controller {
   public static class Login {
     public String username;
     public String password;
-
     public String validate() {
-      if (Admin.authenticate(username, password) == null) {
+      if (!Admin.isValid(username, password)) {
         return "Nom d'utilisateur ou mot de passe invalide";
       }
       return null;
     }
   }
-
-
 }

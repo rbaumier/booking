@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.*;
 import play.db.ebean.*;
+import java.util.List;
 
 @Entity
 public class Admin extends Model {
@@ -11,11 +12,6 @@ public class Admin extends Model {
   public String username;
   public String password;
 
-  public Admin(String username, String password) {
-    this.username = username;
-    this.password = password;
-  }
-
   public static Finder<String,Admin> find = new Finder<String,Admin>(
     String.class, Admin.class
   );
@@ -24,9 +20,10 @@ public class Admin extends Model {
     return password.equals(maybePassword);
   }
 
-  public static Admin authenticate(String username, String password) {
-    Admin user = find.where().eq("username", username).findUnique();
-    System.out.println(user);
-    return user != null && checkPassword(user.password, password) ? user : null;
+  public static boolean isValid(String username, String password) {
+    // prevent InvocationTargetException
+    List<Admin> users = find.where().eq("username", username).findList();
+    Admin user = users.isEmpty() ? null : users.get(0);
+    return user != null && checkPassword(user.password, password);
   }
 }
