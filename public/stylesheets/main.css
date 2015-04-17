@@ -1,31 +1,13 @@
-.banner {
-  width: 100%;
-  height: 300px;
-  margin: 50px 0 50px 0;
-  background-image: url('../images/banner.jpg');
-}
-
-.not-found-banner {
-  width: 700px;
-  height: 510px;
-  background-image: url('../images/404.jpg');
-}
-
 .error {
   color: red;
 }
 
-.home-title {
+.main-title {
   margin-bottom: 45px;
 }
 
-  .inline-title {
-    display: inline-block;
-  }
-
-.newgame {
-  margin-top: 20px;
-  float: right
+.inline-title {
+  display: inline-block;
 }
 
 .form-operations {
@@ -65,33 +47,6 @@ label {
   margin-left: 40px;
 }
 
-.search-button {
-  margin-bottom: 2px;
-  height: 28px;
-}
-
 .child-container {
   text-align: center;
 }
-
-.search {
-  margin-top: 30px;
-}
-
-.search-result {
-  display: none;
-}
-
-.result-line td {
-  text-align: center;
-}
-
-.search-icon {
-  top: -1px;
-}
-
-.info-message {
-  margin-top: 50px;
-}
-
-

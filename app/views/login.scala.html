@@ -6,7 +6,7 @@
 @main("Se connecter") {
   @helper.form(routes.Authentication.login, 'class -> "form-horizontal") {
 
-    <h2 class="home-title">Merci de vous connecter pour accéder aux réservations</h2>
+    <h2 class="main-title">Merci de vous connecter pour accéder aux réservations</h2>
 
     @if(flash.contains("success")) {
         <p class="success">@flash.get("success")</p>

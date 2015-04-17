@@ -1,0 +1,25 @@
+.search-button {
+  margin-bottom: 2px;
+  height: 28px;
+}
+
+.search {
+  margin-top: 30px;
+}
+
+.search-result {
+  display: none;
+}
+
+.search-result > thead > tr > th {
+   text-align: center;
+   padding-bottom: 25px;
+}
+
+.search-icon {
+  top: -1px;
+}
+
+.info-message {
+  margin-top: 50px;
+}
