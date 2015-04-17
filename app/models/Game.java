@@ -44,6 +44,6 @@ public class Game extends Model {
   }
 
   public static List<Game> searchByTitle(String name) {
-    return find.where().eq("name", name).findList();
+    return find.where().contains("name", name).findList();
   }
 }

@@ -31,6 +31,7 @@ function search(title) {
 function renderGames(games) {
   $('.info-message').html('');
   searchResult.show();
+  tbody.html('');
   _.forEach(games, function(game) {
     game.start_date = moment(game.start_date).format('D MMMM YYYY - HH:MM');
     game.action = '<a class="btn btn-primary" href="/games/' + game.id + '/edit">Modifier</a>';
