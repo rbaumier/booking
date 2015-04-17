@@ -7,11 +7,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
       <ul class="nav navbar-nav">
         <li><a href="@routes.Games.index()">Réservations</a></li>
+        <li><a href="@routes.Search.index()">Rechercher</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @defining(session.get("username")) { username =>
           @if(username) {
-            <li><a href="@routes.Authentication.logout()">Déconnexion</a></li>
+            <li><a href="@routes.Authentication.logout()">@username - Déconnexion</a></li>
           } else {
             <li><a href="@routes.Authentication.form()">Connexion</a></li>
           }

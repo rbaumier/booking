@@ -38,8 +38,8 @@ public class Games extends Controller {
     return redirect("/games");
   }
 
-  @Authenticated(Secured.class)
   // returns all games as JSON for AJAX request
+  @Authenticated(Secured.class)
   public static Result getAll() {
     return ok(Json.toJson(Game.all()));
   }

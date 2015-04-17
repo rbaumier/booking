@@ -44,4 +44,8 @@ public class Game extends Model {
   public static void delete(Long id) {
     find.ref(id).delete();
   }
+
+  public static List<Game> searchByTitle(String title) {
+    return find.where().eq("title", title).findList();
+  }
 }

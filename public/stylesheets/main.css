@@ -64,3 +64,16 @@ label {
 .delete-player {
   margin-left: 40px;
 }
+
+.search-button {
+  margin-bottom: 2px;
+  height: 28px;
+}
+
+.child-container {
+  text-align: center;
+}
+
+.search-icon {
+  top: -1px;
+}

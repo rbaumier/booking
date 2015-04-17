@@ -16,6 +16,8 @@ GET         /logout                  controllers.Authentication.logout()
 # Javascript routes
 GET         /javascriptRoutes        controllers.Application.javascriptRoutes
 GET         /games/all               controllers.Games.getAll()
+GET         /search/search           controllers.Search.get(title)
+
 
 # Games view + form
 GET         /games                   controllers.Games.index()
@@ -26,3 +28,6 @@ POST        /games                   controllers.Games.create()
 GET         /games/:id/edit          controllers.Games.edit(id: Long)
 GET         /games/:id/update        controllers.Games.update(id: Long)
 POST        /games/:id/delete        controllers.Games.delete(id: Long)
+
+# Games search
+GET         /search                  controllers.Search.index()
