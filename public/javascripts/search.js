@@ -1,6 +1,6 @@
 'use strict';
 
-var searchResult = $('.search-result')
+var searchResult = $('.search-result');
 var tbody = $('.search-result tbody');
 
 // on Enter button
