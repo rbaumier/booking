@@ -1,6 +1,6 @@
 'use strict';
 
-$('#start_date').val("2015-04-16T15:00"); // DEBUG: autofill date-time
+$('#start_date').val("2015-04-17T15:00"); // DEBUG: autofill date-time
 var addPlayerButton = '<a class="btn btn-default add-player">Ajouter un joueur</a>';
 var deletePlayerButton = '<a class="btn btn-default delete-player disabled">-</a>';
 

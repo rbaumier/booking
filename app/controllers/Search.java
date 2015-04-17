@@ -7,6 +7,8 @@ import play.mvc.Result;
 import play.mvc.Security;
 import views.html.*;
 
+import java.util.List;
+
 public class Search extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result index() {
@@ -14,7 +16,7 @@ public class Search extends Controller {
   }
 
   @Security.Authenticated(Secured.class)
-  public static Result get(String title) {
-    return ok(Json.toJson(Game.searchByTitle(title)));
+  public static Result get(String name) {
+    return ok(Json.toJson(Game.searchByTitle(name)));
   }
 }

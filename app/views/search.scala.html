@@ -2,14 +2,27 @@
 
 @main("Rechercher une réservation", scripts) {
   <div class="child-container">
-    <input type="text" id="title" placeholder="Nom de la partie" autofocus/>
-    <a class="btn btn-default search-button">
-      <span class="glyphicon glyphicon-search search-icon"></span>
-    </a>
+    <div class="search">
+      <input type="text" id="title" placeholder="Nom de la partie" autofocus/>
+      <a class="btn btn-default search-button">
+        <span class="glyphicon glyphicon-search search-icon"></span>
+      </a>
+    </div>
 
-    <ul class="search-result">
-      <li></li>
-    </ul>
+    <div class="info-message"></div>
+
+    <table class="table table-striped search-result">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Numéro de piste</th>
+          <th>Téléphone</th>
+          <th>Date de début</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </div
 }
 

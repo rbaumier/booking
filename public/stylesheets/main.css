@@ -74,6 +74,24 @@ label {
   text-align: center;
 }
 
+.search {
+  margin-top: 30px;
+}
+
+.search-result {
+  display: none;
+}
+
+.result-line td {
+  text-align: center;
+}
+
 .search-icon {
   top: -1px;
 }
+
+.info-message {
+  margin-top: 50px;
+}
+
+

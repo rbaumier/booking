@@ -22,8 +22,6 @@ public class Game extends Model {
   public String name;
 
   @Required
-  @Pattern(value = "/^0[1-6]{1}(([0-9]{2}){4})|((\\s[0-9]{2}){4})|((-[0-9]{2}){4})$/", // french phone numbers validation
-  message="Vous devez spécifier un numéro de téléphone valide.")
   public String phone;
 
   @Formats.DateTime(pattern="yyyy-MM-dd'T'HH:mm")
@@ -45,7 +43,7 @@ public class Game extends Model {
     find.ref(id).delete();
   }
 
-  public static List<Game> searchByTitle(String title) {
-    return find.where().eq("title", title).findList();
+  public static List<Game> searchByTitle(String name) {
+    return find.where().eq("name", name).findList();
   }
 }

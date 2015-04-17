@@ -16,7 +16,7 @@ GET         /logout                  controllers.Authentication.logout()
 # Javascript routes
 GET         /javascriptRoutes        controllers.Application.javascriptRoutes
 GET         /games/all               controllers.Games.getAll()
-GET         /search/search           controllers.Search.get(title)
+GET         /search/get              controllers.Search.get(title)
 
 
 # Games view + form
