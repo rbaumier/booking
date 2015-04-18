@@ -10,6 +10,8 @@ libraryDependencies ++= Seq(
   javaJdbc ,
   javaEbean ,
   cache ,
-  javaWs )
+  javaWs ,
+  "org.mindrot" % "jbcrypt" % "0.3m"
+)
 
-unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
+unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )

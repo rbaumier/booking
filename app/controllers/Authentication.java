@@ -7,8 +7,7 @@ import play.mvc.Result;
 import views.html.*;
 
 public class Authentication extends Controller {
-  static Form<Login> loginForm = Form.form(Login.class);
-
+  static Form<Admin> loginForm = Form.form(Admin.class);
   public static Result form() {
     return ok(login.render(loginForm));
   }
@@ -20,25 +19,14 @@ public class Authentication extends Controller {
   }
 
   public static Result login() {
-    Form<Login> boundForm = loginForm.bindFromRequest();
-    System.out.println(boundForm);
+    Form<Admin> boundForm = loginForm.bindFromRequest();
     if(boundForm.hasErrors()) {
       return badRequest(login.render(boundForm));
     }
-    Login admin = boundForm.get();
+    Admin admin = boundForm.get();
     session().clear();
     session("username", admin.username);
     return redirect(routes.Application.index());
   }
 
-  public static class Login {
-    public String username;
-    public String password;
-    public String validate() {
-      if (!Admin.isValid(username, password)) {
-        return "Nom d'utilisateur ou mot de passe invalide";
-      }
-      return null;
-    }
-  }
 }

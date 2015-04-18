@@ -7,7 +7,7 @@ import views.html.index;
 
 public class Application extends Controller {
   public static Result index() {
-    // new Admin("bowling", "bowling").save();
+//    new Admin().create("bowling", "bowling");
     return ok(index.render());
   }
 
